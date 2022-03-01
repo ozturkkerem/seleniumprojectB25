@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginFunction {
+public class LoginFunction2 {
 
 // 1 TC for login
     /*
@@ -41,6 +41,7 @@ public class LoginFunction {
         driver.close();
     }
 
+
     @Test
     public void login_Page_Title(){
         String expectedResult ="Authorization";
@@ -48,26 +49,49 @@ public class LoginFunction {
         Assert.assertEquals(expectedResult,expectedResult);
     }
 
-    //Positive scenario //HRUsername1
-    @Test
+
+    //Positive scenario
+    @Test (priority = 1)
     public void login_with_valid_credentials_with_login_btn(){
-       //2-write username
-        WebElement userName = driver.findElement(By.xpath("(//input[@class='login-inp'])[1]"));
-        userName.sendKeys(ConfigurationReader.getProperty("HRUsername1"));
 
-        //3-write password
-        WebElement password = driver.findElement(By.xpath("(//input[@class='login-inp'])[2]"));
-        password.sendKeys(ConfigurationReader.getProperty("password"));
+        String [] usernameList2 = {"hr28@cydeo.com", "hr29@cydeo.com", "hr30@cydeo.com","helpdesk28@cydeo.com"//        ,"helpdesk29@cydeo.com" ,"helpdesk30@cydeo.com","marketing28@cydeo.com","marketing29@cydeo.com","marketing30@cydeo.com"
+        };
 
-        //4-click login button
-        WebElement loginBtn = driver.findElement(By.xpath("//input[@type='submit']"));
-        BrowserUtils.sleep(1);
-        loginBtn.click();
+        for (String each : usernameList2) {
+            //find the userName and password input box
+            WebElement userName = driver.findElement(By.xpath("(//input[@class='login-inp'])[1]"));
+            WebElement password = driver.findElement(By.xpath("(//input[@class='login-inp'])[2]"));
+            //send the username and password
+            userName.sendKeys(each);
+            password.sendKeys(ConfigurationReader.getProperty("password"));
 
-        // verify title
-        String expectedTitle = "Portal";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle,expectedTitle);
+            //4-click login button
+            BrowserUtils.sleep(2);
+            WebElement loginBtn = driver.findElement(By.xpath("//input[@type='submit']"));
+            BrowserUtils.sleep(1);
+            loginBtn.click();
+
+            // verify title
+            String expectedTitle = "Portal";
+            String actualTitle = driver.getTitle();
+            BrowserUtils.sleep(2);
+            Assert.assertEquals(actualTitle,expectedTitle);
+
+         BrowserUtils.sleep(5);
+
+            //click to log out button
+            WebElement userProfile = driver.findElement(By.xpath("//span[@id='user-name']"));
+            userProfile.click();
+
+            WebElement userLogOut = driver.findElement(By.xpath("(//span[@class='menu-popup-item-text'])[5]"));
+            userLogOut.click();
+
+            //After going back click to Log in and clear the username
+            userName = driver.findElement(By.xpath("(//input[@placeholder='Login'])[1]"));
+           // userName.click();
+            userName.clear();
+
+        }
 
     }
 
@@ -119,7 +143,7 @@ public class LoginFunction {
 
     }
 
-
+    
 
 
 
