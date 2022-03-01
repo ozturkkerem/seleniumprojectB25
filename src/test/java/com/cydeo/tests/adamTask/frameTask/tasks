@@ -1,0 +1,23 @@
+TC 1: As a User I should be able to see ‘Your content goes here.’ And ‘An iFrame
+containing the TinyMCE WYSIWYG Editor’
+1- Open a chrome browser
+2- Go to https://the-internet.herokuapp.com/
+3- Click iFrame
+4- Verify the ‘Your content goes here.’ label
+5- Verify the header ‘An iFrame containing the TinyMCE WYSIWYG Editor’
+TC 2: As a User I should be able to see BOTTOM label
+1- Open a chrome browser
+2- Go to https://the-internet.herokuapp.com/
+3- Click Nested Frames
+4- Verify the BOTTOM label
+TC 3: As a User I should be able to see MIDDLE label
+1- Open a chrome browser
+2- Go to https://the-internet.herokuapp.com/
+3- Click Nested Frames
+4- Verify the MIDDLE label
+TC 4: As a User I should be able to see RİGHT label and LEFT label
+1- Open a chrome browser
+2- Go to https://the-internet.herokuapp.com/
+3- Click Nested Frames
+4- Verify the RİGHT label
+5- Verify the LEFT label
